@@ -1,16 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap');
+
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -19,8 +18,55 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+
+  /* Register the fonts here to make sure they're included in compiled CSS */
+  .font-special {
+    font-family: "Special Gothic Expanded One", sans-serif;
+  }
+  .font-lacquer {
+    font-family: "Lacquer", system-ui;
+  }
+
+  .font-cinzel {
+    font-family: 'cinzel', cursive;
+  }
+  .font-winky {
+    font-family: "Winky Rough", sans-serif;
+  }
+  .font-protestRevolution {
+    font-family: "Protest Revolution", sans-serif;
+  }
+  .font-eb {
+    font-family: "EB Garamond", serif;
+  }
+  .font-montserrat {
+    font-family: "Montserrat", sans-serif;
+  }
+  .font-play {
+    font-family: "Playwrite AU SA", cursive;
+  }
 }
+@keyframes marquee {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
