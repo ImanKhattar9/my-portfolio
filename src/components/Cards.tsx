@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { HTMLAttributes } from "react";
-
+import Image from 'next/image';
 interface PhoneProps extends HTMLAttributes<HTMLDivElement> {
   imgSrc: string;
   Dark?: boolean;
@@ -15,7 +15,7 @@ const Cards = ({ imgSrc, Dark = false, className, ...props }: PhoneProps) => {
       )}
       {...props}
     >
-      <img
+      <Image
         src={
           Dark
             ? "paper-red.jpg"
@@ -25,7 +25,7 @@ const Cards = ({ imgSrc, Dark = false, className, ...props }: PhoneProps) => {
         alt="t-shirt template"
       />
       <div className="absolute inset-0 flex items-center justify-center z-0">
-        <img
+        <Image
           className="object-contain w-2/3 h-2/3"
           src={imgSrc}
           alt="overlaying t-shirt image"

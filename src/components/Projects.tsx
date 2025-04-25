@@ -2,8 +2,9 @@
 
 import { NextPage } from "next";
 import { motion } from "framer-motion";
-import { FaCalendar, FaClock, FaCss3, FaHtml5, FaJs, FaNodeJs, FaPaperclip, FaReact, FaShoppingCart, FaStore, FaWordpress } from "react-icons/fa";
+import { FaCalendar, FaClock, FaCss3, FaHtml5, FaJs, FaPaperclip, FaReact, FaShoppingCart, FaStore, FaWordpress } from "react-icons/fa";
 import { SiFramer } from "react-icons/si";
+import Image from "next/image";
 
 const Projects: NextPage = () => {
   // Sample card data
@@ -13,23 +14,20 @@ const Projects: NextPage = () => {
       description: "A Lebanon-based e-commerce site offering exclusive artistic products, with a smooth shopping experience and social media integration.",
       image: "projects/escape.png",
       techStack: [
-        <FaWordpress size={20} className="text-pink-400/75" />,
-        <FaShoppingCart size={20} className="text-pink-400/75" />,
-        <FaStore size={20} className="text-pink-400/75" />,
-
+        <FaWordpress key="wordpress-1" size={20} className="text-pink-400/75" />,
+        <FaShoppingCart key="shopping-cart-1" size={20} className="text-pink-400/75" />,
+        <FaStore key="store-1" size={20} className="text-pink-400/75" />,
       ],
       link: "https://escape2001.com",
-      
     },
     {
       title: "Zinatalhafla",
       description: "A Saudi Arabia-based beauty services platform, offering a variety of treatments with an easy booking system and seamless user experience",
       image: "projects/zinat.png",
       techStack: [
-        <FaWordpress size={20} className="text-pink-400/75" />,
-        <FaCalendar size={20} className="text-pink-400/75" />,
-        <FaClock size={20} className="text-pink-400/75" />,
-
+        <FaWordpress key="wordpress-2" size={20} className="text-pink-400/75" />,
+        <FaCalendar key="calendar-2" size={20} className="text-pink-400/75" />,
+        <FaClock key="clock-2" size={20} className="text-pink-400/75" />,
       ],
       link: "https://zinatalhafla.com",
     },
@@ -38,9 +36,9 @@ const Projects: NextPage = () => {
       description: "A portfolio showcasing web development skills with a clean, responsive design and interactive features, highlighting creativity and technical expertise.",
       image: "projects/portfolio.png",
       techStack: [
-        <FaHtml5 size={20} className="text-pink-400/75" />,
-        <FaCss3 size={20} className="text-pink-400/75"  />,
-        <FaJs size={20} className="text-pink-400/75"  />,
+        <FaHtml5 key="html-3" size={20} className="text-pink-400/75" />,
+        <FaCss3 key="css-3" size={20} className="text-pink-400/75" />,
+        <FaJs key="js-3" size={20} className="text-pink-400/75" />,
       ],
       link: "https://paleturquoise-bear-340434.hostingersite.com/",
     },
@@ -49,9 +47,9 @@ const Projects: NextPage = () => {
       description: "A portfolio showcasing web development skills with a clean, responsive design and interactive features, highlighting creativity and technical expertise.",
       image: "projects/mypfl.png",
       techStack: [
-        <FaReact size={20} className="text-pink-400/75" />,
-        <FaCss3 size={20} className="text-pink-400/75"  />,
-        <SiFramer size={20} className="text-pink-400/75" />,
+        <FaReact key="react-4" size={20} className="text-pink-400/75" />,
+        <FaCss3 key="css-4" size={20} className="text-pink-400/75" />,
+        <SiFramer key="framer-4" size={20} className="text-pink-400/75" />,
       ],
       link: "https://imankhattar.com/",
     },
@@ -60,9 +58,9 @@ const Projects: NextPage = () => {
       description: "A Lebanon-based e-commerce site offering a variety of cosmetics with an easy shopping experience (under const, coming soon).",
       image: "projects/biomah.png",
       techStack: [
-        <FaWordpress size={20} className="text-pink-400/75" />,
-        <FaShoppingCart size={20} className="text-pink-400/75" />,
-        <FaStore size={20} className="text-pink-400/75" />,
+        <FaWordpress key="wordpress-5" size={20} className="text-pink-400/75" />,
+        <FaShoppingCart key="shopping-cart-5" size={20} className="text-pink-400/75" />,
+        <FaStore key="store-5" size={20} className="text-pink-400/75" />,
       ],
       link: "https://biomahcosmetics.com",
     },
@@ -71,9 +69,9 @@ const Projects: NextPage = () => {
       description: "A Lebanon-based beauty services website, offering a range of beauty treatments with an easy-to-use online booking system.",
       image: "projects/beauty.png",
       techStack: [
-        <FaWordpress size={20} className="text-pink-400/75" />,
-        <FaCalendar size={20} className="text-pink-400/75" />,
-        <FaClock size={20} className="text-pink-400/75" />,
+        <FaWordpress key="wordpress-6" size={20} className="text-pink-400/75" />,
+        <FaCalendar key="calendar-6" size={20} className="text-pink-400/75" />,
+        <FaClock key="clock-6" size={20} className="text-pink-400/75" />,
       ],
       link: "https://mirasmirrorbeauty.com",
     },
@@ -105,7 +103,7 @@ const Projects: NextPage = () => {
             transition={{ duration: 0.6, delay: index * 0.2 }}
           >
             {/* Image Section */}
-            <img
+            <Image
               src={card.image}
               alt={card.title}
               className="w-full md:w-2/5 h-60 md:h-60"

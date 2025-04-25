@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className="bg-gray-500/40">
         <main>
           <Header />
-          <Home />
+          <Home/>
           <AboutMe />
           <Projects />
           <Knowledge />

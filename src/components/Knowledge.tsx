@@ -5,7 +5,7 @@ import MaxWidthWrapper from './MaxWidthWrapper'
 import { useInView } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import Cards from './Cards'
-
+import Image from 'next/image';
 const TSHIRTS = [
   '/lang/nj.png',
   '/languages/js.png',
@@ -112,12 +112,12 @@ function Review({ imgSrc, className, ...props }: ReviewProps) {
 }
 
 function ReviewGrid() {
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const isInView = useInView(containerRef, { once: true, amount: 0.4 })
-  const columns = splitArray(TSHIRTS, 3)
-  const column1 = columns[0]
-  const column2 = columns[1]
-  const column3 = splitArray(columns[2], 2)
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(containerRef as React.RefObject<Element>, { once: true, amount: 0.4 });
+  const columns = splitArray(TSHIRTS, 3);
+  const column1 = columns[0];
+  const column2 = columns[1];
+  const column3 = splitArray(columns[2], 2);
 
   return (
     <div
@@ -153,19 +153,19 @@ function ReviewGrid() {
       <div className='pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-slate-100' />
       <div className='pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-100' />
     </div>
-  )
+  );
 }
 
 export function Knowledge() {
   return (
     <MaxWidthWrapper className='relative max-w-5xl'>
       {/* Image, positioned more to the right for mobile */}
-      <img
+      <Image
         aria-hidden='true'
-        src='pictures/skilled-in.png'
+        src='/pictures/skilled-in.png'
+        alt=''
         className='absolute select-none -left-10 top-1/3 w-[290px] sm:w-[300px] md:w-[370px] lg:w-[370px] xl:block lg:-left-24 xl:-left-30' 
       />
-
       {/* Align ReviewGrid to the right side */}
       <div className="flex justify-end">
         <ReviewGrid />

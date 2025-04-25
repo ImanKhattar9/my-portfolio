@@ -34,8 +34,6 @@ export default function ContactForm() {
   const [animationComplete, setAnimationComplete] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const words = ['Hello', 'Bonjour', 'سلام', 'Hola', 'Ciao'];
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setIsSubmitting(true);
@@ -63,9 +61,9 @@ export default function ContactForm() {
     }
   };
   
-
   // Auto-rotate greeting words
   useEffect(() => {
+    const words = ['Hello', 'Bonjour', 'سلام', 'Hola', 'Ciao']; // Move words here
     const interval = setInterval(() => {
       setCurrentWord((prevWord) => {
         const currentIndex = words.indexOf(prevWord);
@@ -74,7 +72,7 @@ export default function ContactForm() {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [words]);
+  }, []); // No need to include words in the dependency array
 
   // Intersection observer for animation
   useEffect(() => {
@@ -85,9 +83,11 @@ export default function ContactForm() {
       { threshold: 0.5 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    const currentRef = ref.current; // Copy ref.current to a variable
+    if (currentRef) observer.observe(currentRef);
+    
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      if (currentRef) observer.unobserve(currentRef); // Use the variable here
     };
   }, []);
 
@@ -130,8 +130,8 @@ export default function ContactForm() {
           {currentWord}
         </h1>
         <h2 className="text-xl sm:text-2xl md:text-3xl font-protestRevolution text-gray-500 mt-4">
-          This is Iman Khattar, Let's Get in Touch.
-        </h2>
+  This is Iman Khattar, Let&apos;s Get in Touch.
+</h2>
       </motion.div>
 
       {/* Right Side: Contact Form */}

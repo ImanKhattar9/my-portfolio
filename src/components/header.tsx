@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { useState } from "react";
 import Link from "../../node_modules/next/link";
 import { AnimatePresence, motion } from 'framer-motion';
-
+import Image from 'next/image';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -57,7 +57,7 @@ export default function Header() {
     >
       {/* Logo */}
       <motion.div whileHover={{ scale: 1.1 }}>
-        <img
+        <Image
           src="/pictures/logo.png"
           className="w-10 sm:w-8 md:w-10 lg:w-10"
           alt="Logo"
