@@ -46,9 +46,9 @@ export default function ProfileAnimation() {
         animate={nameControls}
         className="absolute z-10 font-special text-[4.2rem] sm:text-[12rem] md:text-[9rem] lg:text-[10rem] font-bold text-center px-2"
       >
-        <div className="overflow-hidden -mt-8 sm:-mt-20">
+          <div className="overflow-hidden">
           <motion.div
-            initial={{ x: "100vw" }}
+            initial={{ x: "-100vw" }}
             animate={{ x: 0 }}
             transition={{ duration: 1.5, ease: "anticipate", delay: 2 }}
             className="mb-2 sm:mb-0"
