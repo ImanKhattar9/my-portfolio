@@ -68,7 +68,7 @@ export default function AboutMe() {
               <div className="absolute left-[6px] md:left-[30px] top-0 bottom-0 w-0.5 bg-gray-400"></div>
 
               {[
-                { title: "Web Developer - Freelancer", date: "2023 - present", description: "Worked as a Web Developer, customizing themes and ensuring responsive design." },
+                { title: "Web Developer - Freelancer", date: "2023 - present", description: "I write efficient code, ensure responsive design, and implement SEO strategies to enhance website visibility." },
                 { title: "Content Creator & IT Support - Bassel Computers", date: "2021 - 2023", description: "Managed IT tasks and created digital content, including laptop setup and software maintenance." },
                 { title: "Internship Web Developer - A World IT", date: "2022 - 2023", description: "Gained expertise in Angular and TypeScript, working on projects like the Matensa app." },
               ].map((item, index) => (
