@@ -114,8 +114,8 @@ const Projects: NextPage = () => {
             <Image
               src={card.image}
               alt={card.title}
-              width={60}
-              height={60}
+              width={400}  // Use the image's original width or desired width
+              height={300} // Use the image's original height or a proportional height
               className="w-full md:w-2/5 h-60 md:h-60"
             />
 
