@@ -57,11 +57,14 @@ export default function Header() {
     >
       {/* Logo */}
       <motion.div whileHover={{ scale: 1.1 }}>
-        <Image
-          src="/pictures/logo.png"
-          className="w-10 sm:w-8 md:w-10 lg:w-10"
-          alt="Logo"
-        />
+      <Image
+  src="/pictures/logo.png"
+  alt="Logo"
+  width={40}    // You can adjust the numbers
+  height={40}   // depending on your actual logo size
+  className="w-10 sm:w-8 md:w-10 lg:w-10"
+/>
+
       </motion.div>
 
       {/* Desktop Navigation */}

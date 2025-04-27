@@ -56,16 +56,7 @@ export default function ProfileAnimation() {
             IMAN
           </motion.div>
         </div>
-        <div className="overflow-hidden -mt-8 sm:-mt-20">
-          <motion.div
-            initial={{ x: "100vw" }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1.5, ease: "anticipate", delay: 2 }}
-            className="mb-2 sm:mb-0"
-          >
-            IMAN
-          </motion.div>
-        </div>
+
         <div className="overflow-hidden -mt-8 sm:-mt-20">
           <motion.div
             initial={{ x: "100vw" }}

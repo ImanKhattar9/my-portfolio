@@ -100,7 +100,7 @@ function Review({ imgSrc, className, ...props }: ReviewProps) {
   return (
     <div
     className={cn(
-      "animate-fade-in rounded-2xl bg-white p-4 sm:p-6 w-[130px] sm:w-[190px] md:w-[250px] opacity-100 shadow-xl shadow-slate-900/5",
+      "animate-fade-in rounded-2xl bg-white p-4 sm:p-6 w-[160px] sm:w-[220px] md:w-[250px] opacity-100 shadow-xl shadow-slate-900/5",
       className
     )}
     
@@ -122,7 +122,7 @@ function ReviewGrid() {
   return (
     <div
       ref={containerRef}
-      className='relative -mx-4 mt-16 px-12 mr-1 sm:px-0 grid h-[39rem] max-h-[100vh] grid-cols-1 items-start gap-8 overflow-hidden mt-20 md:grid-cols-2 lg:grid-cols-3 justify-items-end'>
+      className='relative -mx-4 mt-16 px-12 mr-1 sm:px-0 grid h-[39rem] max-h-[100vh] grid-cols-1 items-start gap-8  overflow-hidden md:grid-cols-2 lg:grid-cols-3 justify-items-end'>
       {isInView ? (
         <>
           <ReviewColumn
@@ -133,7 +133,7 @@ function ReviewGrid() {
                 'lg:hidden': reviewIndex >= column1.length,
               })
             }
-            msPerPixel={6}
+            msPerPixel={4}
           />
           <ReviewColumn
             reviews={[...column2, ...column3[1]]}
@@ -141,12 +141,12 @@ function ReviewGrid() {
             reviewClassName={(reviewIndex) =>
               reviewIndex >= column2.length ? 'lg:hidden' : ''
             }
-            msPerPixel={12}
+            msPerPixel={7}
           />
           <ReviewColumn
             reviews={column3.flat()}
             className='hidden md:block'
-            msPerPixel={6}
+            msPerPixel={5}
           />
         </>
       ) : null}
@@ -164,7 +164,9 @@ export function Knowledge() {
         aria-hidden='true'
         src='/pictures/skilled-in.png'
         alt=''
-        className='absolute select-none -left-10 top-1/3 w-[290px] sm:w-[300px] md:w-[370px] lg:w-[370px] xl:block lg:-left-24 xl:-left-30' 
+        width={370}  // Based on your biggest Tailwind width (370px)
+        height={370}
+        className='absolute select-none -left-7 top-1/3 w-[240px] sm:w-[300px] md:w-[370px] lg:w-[370px] xl:block lg:-left-24 xl:-left-30' 
       />
       {/* Align ReviewGrid to the right side */}
       <div className="flex justify-end">

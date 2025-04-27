@@ -69,7 +69,7 @@ export default function ContactForm() {
         const currentIndex = words.indexOf(prevWord);
         return words[(currentIndex + 1) % words.length];
       });
-    }, 2000);
+    }, 1200);
 
     return () => clearInterval(interval);
   }, []); // No need to include words in the dependency array
@@ -124,7 +124,7 @@ export default function ContactForm() {
               }
             : {}
         }
-        transition={{ duration: 4, ease: 'easeInOut' }}
+        transition={{ duration: 3, ease: 'easeInOut' }}
       >
         <h1 className="text-[6rem] sm:text-[10rem] md:text-[12rem] lg:text-[10rem] font-lacquer text-white">
           {currentWord}
@@ -140,7 +140,7 @@ export default function ContactForm() {
           className="w-full sm:w-auto flex-1"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 5 }}
+          transition={{ duration: 1, delay: 3 }}
         >
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
