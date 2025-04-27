@@ -46,7 +46,7 @@ const Projects: NextPage = () => {
         <FaCss3 key="css-3" size={20} className="text-pink-400/75" />,
         <FaJs key="js-3" size={20} className="text-pink-400/75" />,
       ],
-      link: "https://paleturquoise-bear-340434.hostingersite.com/",
+      link: "https://tan-woodcock-506703.hostingersite.com/",
     },
     {
       title: "my portfolio",
