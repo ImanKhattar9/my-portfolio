@@ -100,9 +100,9 @@ const Projects: NextPage = () => {
       <div className="flex flex-col items-center  gap-12">
         {cardsData.map((card, index) => (
           <motion.div
-          id="project"
+            id="project"
             key={index}
-              variants={pageVariants}
+            variants={pageVariants}
 
             className="sticky top-20 card flex flex-col md:flex-row bg-gray-300 rounded-xl shadow-lg w-[95%] max-w-s md:max-w-4xl overflow-hidden"
             initial={{ opacity: 0, y: 50 }}
