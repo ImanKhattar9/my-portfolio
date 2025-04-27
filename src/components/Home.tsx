@@ -39,12 +39,12 @@ export default function ProfileAnimation() {
   }, [nameControls, ovalControls]);
 
   return (
-    <div className="h-[96vh] flex flex-col items-center justify-center text-white relative mt-3 md:min-h-screen">
+    <div className="h-[85vh] flex flex-col items-center justify-center text-white relative mt-3 md:min-h-screen">
       {/* Name Animation */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={nameControls}
-        className="absolute font-special text-[4.2rem] sm:text-[12rem] md:text-[9rem] lg:text-[10rem] font-bold text-center px-2"
+        className="absolute x-10 font-special text-[4rem] sm:text-[12rem] md:text-[9rem] lg:text-[10rem] font-bold text-center px-2"
       >
         <div className="overflow-hidden">
           <motion.div
@@ -105,8 +105,8 @@ export default function ProfileAnimation() {
       <div className="absolute top-15 right-7 sm:right-20 sm:top-15 flex items-center">
         {isVisible && (
           <motion.svg
-            width="80"
-            height="80"
+            width="70"
+            height="70"
             viewBox="0 0 200 200"
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
@@ -137,7 +137,7 @@ export default function ProfileAnimation() {
       <MotionAnchor
         href="/my cv.pdf"
         download
-        className="fixed bottom-8 sm:bottom-1 right-4 flex items-center group"
+        className="fixed bottom-6 sm:bottom-1 right-4 flex items-center group"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 2 }}
