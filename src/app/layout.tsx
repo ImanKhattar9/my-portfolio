@@ -15,8 +15,7 @@
     description: "Portfolio of Iman Khattar, a creative web developer specializing in modern and animated websites.",
   };
 
-  export default function RootLayout({
-  }: Readonly<{ }>) {
+  const RootLayout: React.FC = () => {
     return (
       <html lang="en">
         <body className="bg-gray-500/40">
@@ -50,4 +49,6 @@
         </body>
       </html>
     );
-  }
+  };
+  export default RootLayout;
+
