@@ -25,10 +25,12 @@ const Cards = ({ imgSrc, Dark = false, className, ...props }: PhoneProps) => {
         alt="t-shirt template"
       />
       <div className="absolute inset-0 flex items-center justify-center z-0">
-        <img
+        <Image
           className="object-contain w-2/3 h-2/3"
           src={imgSrc}
-          alt="overlaying t-shirt image"
+          alt="Overlaying t-shirt image"
+          width={500}   // Add a width if needed
+          height={500}  // Add a height if needed
         />
       </div>
     </div>

@@ -56,10 +56,6 @@ export default function ProfileAnimation() {
             IMAN
           </motion.div>
         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 3d56ed6d5d5be4aab0b6fa472b36b071b2b7173f
         <div className="overflow-hidden -mt-8 sm:-mt-20">
           <motion.div
             initial={{ x: "100vw" }}

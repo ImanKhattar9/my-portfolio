@@ -16,8 +16,7 @@
   };
 
   export default function RootLayout({
-    children,
-  }: Readonly<{ children: React.ReactNode }>) {
+  }: Readonly<{ }>) {
     return (
       <html lang="en">
         <body className="bg-gray-500/40">
@@ -45,6 +44,9 @@
             <Contact />
             </section>
           </div>
+            {/* Vercel Analytics and Speed Insights */}
+            <Analytics />
+            <SpeedInsights />
         </body>
       </html>
     );

@@ -51,7 +51,6 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
     const handleWheel = (e: WheelEvent) => {
       const atAboutSection = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
       const isAtTopOfAbout = aboutSection.scrollTop <= 0;
-      const isAtBottomOfAbout = aboutSection.scrollHeight - aboutSection.scrollTop === aboutSection.clientHeight;
     
       if (!atAboutSection) {
         // Home page: Always scroll horizontally
