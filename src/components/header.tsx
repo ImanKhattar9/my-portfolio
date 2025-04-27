@@ -50,7 +50,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="flex items-center justify-between px-6 py-2 bg-white rounded-full shadow-lg mt-4 ml-4 mr-4 md:ml-8 md:mr-8 h-[10vh] relative z-40"  // Add z-40 here
+      className="flex items-center justify-between px-6 py-2 bg-white rounded-full shadow-lg mt-8 ml-4 mr-4 md:ml-8 md:mr-8 h-[10vh] relative z-40"  // Add z-40 here
       variants={headerVariants}
       initial="hidden"
       animate="visible"
@@ -110,7 +110,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <motion.button
           onClick={toggleMenu}
-          className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="lg:hidden p-3 rounded-lg hover:bg-gray-100 transition-colors"
           whileTap={{ scale: 0.95 }}
         >
           {/* Animated hamburger icon */}
@@ -154,7 +154,7 @@ export default function Header() {
 
             {/* Drawer */}
             <motion.div
-              className="fixed top-4 right-0 h-screen w-72 bg-white shadow-xl z-50 lg:hidden"
+              className="fixed top-8 right-0 h-screen w-72 bg-white shadow-xl z-50 lg:hidden"
               initial="hidden"
               animate="visible"
               exit="exit"
