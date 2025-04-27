@@ -50,7 +50,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="flex items-center justify-between px-6 py-2 bg-white rounded-full shadow-lg mt-8 ml-4 mr-4 md:ml-8 md:mr-8 h-[10vh] relative z-40"  // Add z-40 here
+      className="flex items-center justify-between px-6 py-2 bg-white rounded-full shadow-lg mt-6 ml-4 mr-4 md:ml-8 md:mr-8 h-[10vh] relative z-40"  // Add z-40 here
       variants={headerVariants}
       initial="hidden"
       animate="visible"
@@ -60,9 +60,9 @@ export default function Header() {
       <Image
   src="/pictures/logo.png"
   alt="Logo"
-  width={40}    // You can adjust the numbers
-  height={40}   // depending on your actual logo size
-  className="w-10 sm:w-8 md:w-10 lg:w-10"
+  width={50}    // You can adjust the numbers
+  height={50}   // depending on your actual logo size
+  className="w-9 sm:w-8 md:w-10 lg:w-10"
 />
 
       </motion.div>
