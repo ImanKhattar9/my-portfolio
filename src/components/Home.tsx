@@ -39,12 +39,12 @@ export default function ProfileAnimation() {
   }, [nameControls, ovalControls]);
 
   return (
-    <div className="h-[94vh] flex flex-col items-center justify-center text-white relative mt-3 md:min-h-screen">
+    <div className="h-[96vh] flex flex-col items-center justify-center text-white relative mt-3 md:min-h-screen">
       {/* Name Animation */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={nameControls}
-        className="absolute z-10 font-special text-[4.2rem] sm:text-[12rem] md:text-[9rem] lg:text-[10rem] font-bold text-center px-2"
+        className="absolute font-special text-[4.2rem] sm:text-[12rem] md:text-[9rem] lg:text-[10rem] font-bold text-center px-2"
       >
         <div className="overflow-hidden">
           <motion.div
@@ -71,7 +71,7 @@ export default function ProfileAnimation() {
       <motion.div
         initial={{ scale: 0 }}
         animate={ovalControls}
-        className="relative w-14 h-24 sm:w-28 sm:h-44 z-20"
+        className="relative w-15 h-24 sm:w-28 sm:h-44 z-20"
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Front Side */}
@@ -102,11 +102,11 @@ export default function ProfileAnimation() {
       </motion.div>
 
       {/* Circular Text Animation */}
-      <div className="absolute top-20 right-7 sm:right-20 sm:top-20 flex items-center">
+      <div className="absolute top-15 right-7 sm:right-20 sm:top-15 flex items-center">
         {isVisible && (
           <motion.svg
-            width="70"
-            height="70"
+            width="80"
+            height="80"
             viewBox="0 0 200 200"
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
@@ -137,7 +137,7 @@ export default function ProfileAnimation() {
       <MotionAnchor
         href="/my cv.pdf"
         download
-        className="fixed bottom-4 sm:bottom-1 right-3 flex items-center group"
+        className="fixed bottom-8 sm:bottom-1 right-4 flex items-center group"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 2 }}
