@@ -116,7 +116,7 @@ const Projects: NextPage = () => {
               alt={card.title}
               width={400}  // Use the image's original width or desired width
               height={300} // Use the image's original height or a proportional height
-              className="w-full md:w-2/5 h-60 md:h-60"
+              className="w-full md:w-2/5 h-70 md:h-60"
             />
 
             {/* Text Section */}
