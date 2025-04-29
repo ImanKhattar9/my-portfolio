@@ -26,13 +26,9 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
       const currentY = e.touches[0].clientY;
       const deltaY = currentY - startY;
 
-      const atEndOfHorizontalScroll =
-        Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
+      const atAboutSection = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
 
-      const isAtTopOfAbout = aboutSection.scrollTop <= 0;
-
-      // When not yet in About — scroll horizontally
-      if (!atEndOfHorizontalScroll) {
+      if (!atAboutSection) {
         e.preventDefault();
         container.scrollBy({
           left: -deltaY,
@@ -40,39 +36,40 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
         });
         startY = currentY;
       } else {
-        // Inside About, only scroll back to Home if at top and scrolling down
-        if (deltaY > 60 && isAtTopOfAbout) {
+        if (deltaY < -30 && aboutSection.scrollTop <= 0) {
+          // Prevent scrolling up if at the top of About section
           e.preventDefault();
           container.scrollBy({
             left: -container.clientWidth,
             behavior: "smooth",
           });
         }
-        // else: allow normal vertical scroll inside About
       }
     };
 
     const handleWheel = (e: WheelEvent) => {
-      const atEndOfHorizontalScroll =
-        Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
-      const isAtTopOfAbout = aboutSection.scrollTop <= 0;
+      const atAboutSection = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
 
-      if (!atEndOfHorizontalScroll) {
+      if (!atAboutSection) {
+        // Home page: Always scroll horizontally
         e.preventDefault();
         container.scrollBy({
           left: e.deltaY,
           behavior: "smooth",
         });
-      } else if (e.deltaY < -30 && isAtTopOfAbout) {
-        e.preventDefault();
-        container.scrollBy({
-          left: -container.clientWidth,
-          behavior: "smooth",
-        });
+      } else {
+        if (e.deltaY < 0 && aboutSection.scrollTop <= 0) {
+          // Scrolling up at top of About: move back to Home
+          e.preventDefault();
+          container.scrollBy({
+            left: -container.clientWidth,
+            behavior: "smooth",
+          });
+        }
       }
-      // otherwise, allow natural scroll inside About
     };
 
+    // Attach event listeners
     container.addEventListener("touchstart", handleTouchStart, { passive: false });
     container.addEventListener("touchmove", handleTouchMove, { passive: false });
     container.addEventListener("wheel", handleWheel, { passive: false });
@@ -88,7 +85,7 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
     <div
       ref={containerRef}
       className="flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory w-screen [&::-webkit-scrollbar]:hidden scrollbar-hide"
-      style={{ height: "100vh", overscrollBehavior: "none" }}
+      style={{ height: "100vh" }}
     >
       {/* Home Section */}
       <section className="w-screen h-screen flex-shrink-0 snap-start">
@@ -99,7 +96,6 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
       <section
         ref={aboutRef}
         className="w-screen h-screen flex-shrink-0 snap-start overflow-y-auto [&::-webkit-scrollbar]:hidden scrollbar-hide"
-        style={{ overscrollBehavior: "contain" }}
       >
         {children[1]}
       </section>
