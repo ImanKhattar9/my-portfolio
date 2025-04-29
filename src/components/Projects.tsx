@@ -49,7 +49,7 @@ const Projects: NextPage = () => {
       link: "https://tan-woodcock-506703.hostingersite.com/",
     },
     {
-      title: "my portfolio",
+      title: "My portfolio",
       description: "A portfolio showcasing web development skills with a clean, responsive design and interactive features, highlighting creativity and technical expertise.",
       image: "/projects/mypfl.png",
       techStack: [
@@ -115,13 +115,13 @@ const Projects: NextPage = () => {
               src={card.image}
               alt={card.title}
               width={400}  // Use the image's original width or desired width
-              height={300} // Use the image's original height or a proportional height
-              className="w-full md:w-2/5 h-60 md:h-60"
+              height={400} // Use the image's original height or a proportional height
+              className="w-full md:w-2/4 h-70 md:h-60"
             />
 
             {/* Text Section */}
             <div className="p-4 md:p-8 flex flex-col justify-between">
-              <h2 className="text-lg md:text-2xl font-play font-bold">{card.title}</h2>
+              <h2 className="text-lg md:text-2xl font-bold">{card.title}</h2>
               <p className="text-sm md:text-sm text-gray-700 mt-2 md:mt-4">{card.description}</p>
 
               <div className="flex items-center mt-2 md:mt-4">

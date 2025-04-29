@@ -50,20 +50,20 @@ export default function Header() {
 
   return (
     <motion.header
-      className="flex items-center justify-between px-6 py-2 bg-white rounded-full shadow-lg mt-4 ml-4 mr-4 md:ml-8 md:mr-8 h-[10vh] relative z-40"  // Add z-40 here
+      className="flex items-center justify-between px-2 bg-white rounded-full shadow-lg mt-7 ml-3 mr-3 md:ml-8 md:mr-8 h-[10vh] relative z-40"  // Add z-40 here
       variants={headerVariants}
       initial="hidden"
       animate="visible"
     >
       {/* Logo */}
       <motion.div whileHover={{ scale: 1.1 }}>
-      <Image
-  src="/pictures/logo.png"
-  alt="Logo"
-  width={40}    // You can adjust the numbers
-  height={40}   // depending on your actual logo size
-  className="w-10 sm:w-8 md:w-10 lg:w-10"
-/>
+        <Image
+          src="/pictures/logo.png"
+          alt="Logo"
+          width={40}    // You can adjust the numbers
+          height={40}   // depending on your actual logo size
+          className="w-11 ml-2 sm:w-8 md:w-10 lg:w-10"
+        />
 
       </motion.div>
 
@@ -97,10 +97,10 @@ export default function Header() {
       </div>
 
       {/* Right Section */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Button
-            className="text-sm text-white bg-pink-500/75 px-4 py-2 cursor-pointer lg:px-8 hidden sm:inline-block"
+            className="text-sm text-white bg-pink-500/75 px-4 py-2 cursor-pointer lg:px-8 mr-4 hidden sm:inline-block"
             onClick={handleClick}  // Added the onClick handler here
           >
             Hire me
@@ -110,7 +110,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <motion.button
           onClick={toggleMenu}
-          className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="lg:hidden p-3 mr-1 rounded-lg hover:bg-gray-100 transition-colors"
           whileTap={{ scale: 0.95 }}
         >
           {/* Animated hamburger icon */}
@@ -154,7 +154,7 @@ export default function Header() {
 
             {/* Drawer */}
             <motion.div
-              className="fixed top-4 right-0 h-screen w-72 bg-white shadow-xl z-50 lg:hidden"
+              className="fixed top-6 right-0 h-screen w-62 bg-white shadow-xl z-50 lg:hidden"
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -188,11 +188,11 @@ export default function Header() {
                   <li>
                     <Link
                       href="/#about"
-                      className="hover:underline text-lg flex items-center justify-between"
+                      className="text-lg flex items-center justify-between"
                       onClick={toggleMenu}
                     >
-                      About
-                      <motion.span
+                      <span className="hover:underline">About</span>
+                        <motion.span
                         className="text-gray-400 text-xl"
                         animate={{ x: [0, 5, 0] }}
                         transition={{ repeat: Infinity, duration: 1.5 }}
@@ -204,11 +204,10 @@ export default function Header() {
                   <li>
                     <Link
                       href="/#project"
-                      className="hover:underline text-lg flex items-center justify-between"
+                      className="text-lg flex items-center justify-between"
                       onClick={toggleMenu}
                     >
-                      Project
-                      <motion.span
+                      <span className="hover:underline">Project</span>                      <motion.span
                         className="text-gray-400 text-xl"
                         animate={{ x: [0, 5, 0] }}
                         transition={{ repeat: Infinity, duration: 1.5 }}
@@ -220,10 +219,10 @@ export default function Header() {
                   <li>
                     <Link
                       href="/#knowledge"
-                      className="hover:underline text-lg flex items-center justify-between"
+                      className="text-lg flex items-center justify-between"
                       onClick={toggleMenu}
                     >
-                      Knowledge
+                      <span className="hover:underline">Knowledge</span>
                       <motion.span
                         className="text-gray-400 text-xl"
                         animate={{ x: [0, 5, 0] }}
@@ -236,10 +235,10 @@ export default function Header() {
                   <li>
                     <Link
                       href="/#contact"
-                      className="hover:underline text-lg flex items-center justify-between"
+                      className="text-lg flex items-center justify-between"
                       onClick={toggleMenu}
                     >
-                      Contact
+                      <span className="hover:underline">Contact</span>
                       <motion.span
                         className="text-gray-400 text-xl"
                         animate={{ x: [0, 5, 0] }}
@@ -252,7 +251,7 @@ export default function Header() {
                 </ul>
 
                 {/* Mobile Hire Button */}
-                <Button className="w-full text-white bg-pink-500/75 text-lg py-6 mt-78 cursor-pointer" onClick={handleClick}>
+                <Button className="w-full text-white bg-pink-500/75 text-lg py-6 mt-82 cursor-pointer" onClick={handleClick}>
                   Hire me
                 </Button>
               </div>

@@ -39,12 +39,12 @@ export default function ProfileAnimation() {
   }, [nameControls, ovalControls]);
 
   return (
-    <div className="h-[94vh] flex flex-col items-center justify-center text-white relative mt-3 md:min-h-screen">
+    <div className="h-[85vh] flex flex-col items-center justify-center text-white relative mt-3 md:min-h-screen">
       {/* Name Animation */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={nameControls}
-        className="absolute z-10 font-special text-[4.2rem] sm:text-[12rem] md:text-[9rem] lg:text-[10rem] font-bold text-center px-2"
+        className="absolute x-10 font-special text-[4rem] sm:text-[12rem] md:text-[9rem] lg:text-[10rem] font-bold text-center px-2"
       >
         <div className="overflow-hidden">
           <motion.div
@@ -56,7 +56,7 @@ export default function ProfileAnimation() {
             IMAN
           </motion.div>
         </div>
-        <div className="overflow-hidden -mt-8 sm:-mt-20">
+        <div className="overflow-hidden -mt-5  sm:-mt-20">
           <motion.div
             initial={{ x: "100vw" }}
             animate={{ x: 0 }}
@@ -71,7 +71,7 @@ export default function ProfileAnimation() {
       <motion.div
         initial={{ scale: 0 }}
         animate={ovalControls}
-        className="relative w-14 h-24 sm:w-28 sm:h-44 z-20"
+        className="relative w-15 h-24 sm:w-28 sm:h-44 z-20"
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Front Side */}
@@ -102,11 +102,11 @@ export default function ProfileAnimation() {
       </motion.div>
 
       {/* Circular Text Animation */}
-      <div className="absolute top-20 right-7 sm:right-20 sm:top-20 flex items-center">
+      <div className="absolute top-15 right-7 sm:right-20 sm:top-15 flex items-center">
         {isVisible && (
           <motion.svg
-            width="70"
-            height="70"
+            width="65"
+            height="65"
             viewBox="0 0 200 200"
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
@@ -135,22 +135,23 @@ export default function ProfileAnimation() {
 
       {/* Download CV */}
       <MotionAnchor
-        href="/my cv.pdf"
-        download
-        className="fixed bottom-4 sm:bottom-1 right-3 flex items-center group"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 2 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <div className="relative flex items-center gap-2 px-2 py-2 bg-pink-500/75 backdrop-blur-sm rounded-full text-white font-semibold shadow-lg hover:shadow-pink-500/30 transition-all">
-          <FiDownload className="text-white text-xl" />
-          <span className="absolute bottom-full mb-2 left-1/4 -translate-x-1/2 text-center bg-white text-black text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            Download My CV
-          </span>
-        </div>
-      </MotionAnchor>
+  href="/my cv.pdf"
+  download
+  className="fixed bottom-6 sm:bottom-1 right-4 flex items-center group animate-bounce"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 2 }}
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.9 }}
+>
+  <div className="relative flex items-center gap-2 px-3 py-3 bg-pink-500/75 backdrop-blur-sm rounded-full text-white font-semibold shadow-lg hover:shadow-pink-500/30 transition-all">
+    <FiDownload className="text-white text-xl" />
+    <span className="absolute bottom-full mb-2 left-1/4 -translate-x-1/2 text-center bg-white text-black text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      Download My CV
+    </span>
+  </div>
+</MotionAnchor>
+
     </div>
   );
 }

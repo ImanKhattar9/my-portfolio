@@ -39,6 +39,7 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
         startY = currentY;
       } else {
         if (deltaY > 30 && isAtTopOfAbout) {
+          // Only navigate to Home if scrolling up while at the top of About
           e.preventDefault();
           container.scrollBy({
             left: -container.clientWidth,
@@ -62,7 +63,7 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
       } else {
         // Inside About (and future Projects if you add more sections)
         if (e.deltaY < 0 && isAtTopOfAbout) {
-          // Scrolling up at top of About: move back to Home
+          // Only scroll to the Home section if scrolling up at the top of About
           e.preventDefault();
           container.scrollBy({
             left: -container.clientWidth,
