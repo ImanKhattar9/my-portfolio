@@ -17,21 +17,22 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
     if (!container || !aboutSection) return;
 
     let startY = 0;
-    let isAtTopOfAbout = false;
 
     const handleTouchStart = (e: TouchEvent) => {
       startY = e.touches[0].clientY;
-      isAtTopOfAbout = aboutSection.scrollTop <= 0;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
       const currentY = e.touches[0].clientY;
       const deltaY = currentY - startY;
 
-      const atAboutSection =
+      const atEndOfHorizontalScroll =
         Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
 
-      if (!atAboutSection) {
+      const isAtTopOfAbout = aboutSection.scrollTop <= 0;
+
+      // When not yet in About — scroll horizontally
+      if (!atEndOfHorizontalScroll) {
         e.preventDefault();
         container.scrollBy({
           left: -deltaY,
@@ -39,37 +40,37 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
         });
         startY = currentY;
       } else {
+        // Inside About, only scroll back to Home if at top and scrolling down
         if (deltaY > 60 && isAtTopOfAbout) {
-          // Only navigate to Home if scrolling up while at the top of About
           e.preventDefault();
           container.scrollBy({
             left: -container.clientWidth,
             behavior: "smooth",
           });
         }
+        // else: allow normal vertical scroll inside About
       }
     };
 
     const handleWheel = (e: WheelEvent) => {
-      const atAboutSection =
+      const atEndOfHorizontalScroll =
         Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
       const isAtTopOfAbout = aboutSection.scrollTop <= 0;
 
-      if (!atAboutSection) {
+      if (!atEndOfHorizontalScroll) {
         e.preventDefault();
         container.scrollBy({
           left: e.deltaY,
           behavior: "smooth",
         });
-      } else {
-        if (e.deltaY < -30 && isAtTopOfAbout) {
-          e.preventDefault();
-          container.scrollBy({
-            left: -container.clientWidth,
-            behavior: "smooth",
-          });
-        }
+      } else if (e.deltaY < -30 && isAtTopOfAbout) {
+        e.preventDefault();
+        container.scrollBy({
+          left: -container.clientWidth,
+          behavior: "smooth",
+        });
       }
+      // otherwise, allow natural scroll inside About
     };
 
     container.addEventListener("touchstart", handleTouchStart, { passive: false });
