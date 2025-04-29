@@ -72,9 +72,9 @@ export default function Header() {
       <div className="hidden lg:flex flex-grow justify-center">
         <ul className="flex space-x-6 text-sm items-center">
           <li className="flex items-center">
-            <Link href="/#about" className="hover:underline">
+            <a href="/#about" className="hover:underline">
               About
-            </Link>
+            </a>
           </li>
           <span className="mx-4 text-gray-400">/</span>
           <li className="flex items-center">
