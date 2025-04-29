@@ -208,7 +208,8 @@ export default function Header() {
                       className="text-lg flex items-center justify-between"
                       onClick={toggleMenu}
                     >
-                      <span className="hover:underline">Project</span>                      <motion.span
+                      <span className="hover:underline">Project</span>                      
+                      <motion.span
                         className="text-gray-400 text-xl"
                         animate={{ x: [0, 5, 0] }}
                         transition={{ repeat: Infinity, duration: 1.5 }}
