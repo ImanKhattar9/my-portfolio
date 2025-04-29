@@ -135,24 +135,22 @@ export default function ProfileAnimation() {
 
       {/* Download CV */}
       <MotionAnchor
-  href="/my cv.pdf"
-  download
-  className="fixed bottom-6 sm:bottom-1 right-4 flex items-center group animate-bounce"
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: 2 }}
-  whileHover={{ scale: 1.1 }}
-  whileTap={{ scale: 0.9 }}
->
-  <div className="relative flex items-center gap-2 px-3 py-3 bg-pink-500/75 backdrop-blur-sm rounded-full text-white font-semibold shadow-lg hover:shadow-pink-500/30 transition-all">
-    <FiDownload className="text-white text-xl" />
-    <span className="absolute bottom-full mb-2 left-1/4 -translate-x-1/2 text-center bg-white text-black text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      Download My CV
-    </span>
-  </div>
-</MotionAnchor>
-
+      href="/my cv.pdf"
+        download
+        className="fixed bottom-6 sm:bottom-1 right-4 flex items-center group animate-bounce"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 2 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <div className="relative flex items-center gap-2 px-3 py-3 bg-pink-500/75 backdrop-blur-sm rounded-full text-white font-semibold shadow-lg hover:shadow-pink-500/30 transition-all">
+        <FiDownload className="text-white text-xl" />
+      <span className="absolute bottom-full mb-2 left-1/4 -translate-x-1/2 text-center bg-white text-black text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        Download My CV        
+        </span>
     </div>
+  </MotionAnchor></div>
   );
 }
 

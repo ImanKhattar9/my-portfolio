@@ -51,6 +51,7 @@ export default function Header() {
   return (
     <motion.header
       className="flex items-center justify-between px-2 bg-white rounded-full shadow-lg mt-7 ml-3 mr-3 md:ml-8 md:mr-8 h-[10vh] relative z-40"  // Add z-40 here
+
       variants={headerVariants}
       initial="hidden"
       animate="visible"
