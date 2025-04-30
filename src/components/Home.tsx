@@ -137,7 +137,7 @@ export default function ProfileAnimation() {
       <MotionAnchor
       href="/my cv.pdf"
         download
-        className="fixed bottom-6 sm:bottom-1 right-4 flex items-center group animate-bounce"
+        className="fixed bottom-6 z-50 sm:bottom-1 right-4 flex items-center group animate-bounce"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 2 }}
