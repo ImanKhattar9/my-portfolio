@@ -105,8 +105,8 @@ export default function ProfileAnimation() {
       <div className="absolute top-15 right-7 sm:right-20 sm:top-15 flex items-center">
         {isVisible && (
           <motion.svg
-            width="65"
-            height="65"
+            width="60"
+            height="60"
             viewBox="0 0 200 200"
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
