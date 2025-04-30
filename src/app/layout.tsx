@@ -12,7 +12,11 @@
 
   export const metadata = {
     title: "Iman Khattar - Web Developer",
-    description: "Portfolio of Iman Khattar, a creative web developer specializing in modern and animated websites.",
+    description:
+      "Portfolio of Iman Khattar, a creative web developer specializing in modern and animated websites.",
+      icons: {
+        icon: "/logo.png", // Use your file name here
+      },
   };
 
   const RootLayout: React.FC = () => {

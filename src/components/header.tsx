@@ -50,7 +50,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="flex items-center justify-between px-2 bg-white rounded-full shadow-lg mt-7 ml-3 mr-3 md:ml-8 md:mr-8 h-[10vh] relative z-40"  // Add z-40 here
+    className="flex items-center justify-between px-2 bg-white rounded-full shadow-lg mt-8 ml-3 mr-3 md:ml-8 md:mr-8 h-[9vh] sm:h-[10vh] relative z-40"
 
       variants={headerVariants}
       initial="hidden"
@@ -59,7 +59,7 @@ export default function Header() {
       {/* Logo */}
       <motion.div whileHover={{ scale: 1.1 }}>
         <Image
-          src="/pictures/logo.png"
+          src="/logo.png"
           alt="Logo"
           width={40}    // You can adjust the numbers
           height={40}   // depending on your actual logo size
@@ -112,6 +112,7 @@ export default function Header() {
         <motion.button
           onClick={toggleMenu}
           className="lg:hidden p-3 mr-1 rounded-lg hover:bg-gray-100 transition-colors"
+
           whileTap={{ scale: 0.95 }}
         >
           {/* Animated hamburger icon */}
@@ -155,7 +156,7 @@ export default function Header() {
 
             {/* Drawer */}
             <motion.div
-              className="fixed top-6 right-0 h-screen w-62 bg-white shadow-xl z-50 lg:hidden"
+              className="fixed top-8 right-0 h-screen w-62 bg-white shadow-xl z-50 lg:hidden"
               initial="hidden"
               animate="visible"
               exit="exit"
