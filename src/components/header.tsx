@@ -59,7 +59,7 @@ export default function Header() {
       {/* Logo */}
       <motion.div whileHover={{ scale: 1.1 }}>
         <Image
-          src="/pictures/logo.png"
+          src="/logo.png"
           alt="Logo"
           width={40}    // You can adjust the numbers
           height={40}   // depending on your actual logo size
