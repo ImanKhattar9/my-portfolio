@@ -10,10 +10,15 @@ import Projects from "@/components/Projects";
 import "./globals.css";
 import HorizontalScrollWrapper from "@/components/PageWrapper";
 
+// app/layout.tsx or app/layout.js
+
 export const metadata = {
-  title: "Iman Khattar - Web Developer",
+  title: "Iman Khattar",
   description:
     "Portfolio of Iman Khattar, a creative web developer specializing in modern and animated websites.",
+  icons: {
+    icon: "/pictures/logo.png", 
+  },
 };
 
 const RootLayout: React.FC = () => {
