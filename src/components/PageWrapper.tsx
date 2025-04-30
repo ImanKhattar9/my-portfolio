@@ -25,9 +25,9 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
     const handleTouchMove = (e: TouchEvent) => {
       const currentY = e.touches[0].clientY;
       const deltaY = currentY - startY;
-
+    
       const atAboutSection = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
-
+    
       if (!atAboutSection) {
         e.preventDefault();
         container.scrollBy({
@@ -36,13 +36,18 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
         });
         startY = currentY;
       } else {
-        if (deltaY < -30 && aboutSection.scrollTop <= 0) {
-          // Prevent scrolling up if at the top of About section
+        const atTopOfAboutSection = aboutSection.scrollTop <= 0;
+    
+        if (deltaY < -30 && atTopOfAboutSection) {
+          // Transition back to Home section
           e.preventDefault();
           container.scrollBy({
             left: -container.clientWidth,
             behavior: "smooth",
           });
+        } else if (deltaY > 0 && atTopOfAboutSection) {
+          // Prevent default behavior when trying to scroll up at the top of About section
+          e.preventDefault();
         }
       }
     };
