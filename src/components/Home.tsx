@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiDownload } from "react-icons/fi";
 import React from "react";
-  
+
 // Fix for ESLint display-name warning
 const AnchorWithRef = React.forwardRef<HTMLAnchorElement, React.ComponentProps<'a'>>(
   (props, ref) => <a ref={ref} {...props} />
@@ -39,7 +39,7 @@ export default function ProfileAnimation() {
   }, [nameControls, ovalControls]);
 
   return (
-<div className="relative flex flex-col items-center justify-start text-white h-[85vh] pt-50 sm:pt-24 md:pt-28">
+<div className="relative flex flex-col items-center justify-start text-white h-[85vh] pt-55 sm:pt-24 md:pt-28">
   {/* Name + Oval Wrapper */}
   <div className="relative">
     {/* Name */}
@@ -107,8 +107,8 @@ export default function ProfileAnimation() {
       <div className="absolute top-13 right-7 sm:right-20 sm:top-15 flex items-center">
         {isVisible && (
           <motion.svg
-            width="60"
-            height="60"
+            width="55"
+            height="55"
             viewBox="0 0 200 200"
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
