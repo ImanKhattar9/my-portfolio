@@ -26,10 +26,12 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
       const currentY = e.touches[0].clientY;
       const deltaY = currentY - startY;
 
-      const isAtAbout = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
+      const isAtAbout =
+        Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
       const atTop = aboutSection.scrollTop <= 0;
       const atBottom =
-        Math.abs(aboutSection.scrollTop + aboutSection.clientHeight - aboutSection.scrollHeight) < 5;
+        Math.abs(aboutSection.scrollTop + aboutSection.clientHeight - aboutSection.scrollHeight) <
+        5;
 
       if (!isAtAbout) {
         e.preventDefault();
@@ -38,7 +40,7 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
         return;
       }
 
-      // Pulling up from About
+      // Scroll up from About to Home
       if (deltaY > 0 && atTop) {
         upScrollCount.current += 1;
         if (upScrollCount.current >= 2) {
@@ -46,12 +48,16 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
           container.scrollBy({ left: -container.clientWidth, behavior: "smooth" });
           upScrollCount.current = 0;
         }
-      } else if (deltaY < 0 && atBottom) {
-        // Scrolling down from bottom of About
+      }
+
+      // Scroll down from About to vertical sections
+      else if (deltaY < 0 && atBottom) {
         e.preventDefault();
-        document.documentElement.scrollTo({
-          top: window.innerHeight,
-          behavior: "smooth",
+        requestAnimationFrame(() => {
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: "smooth",
+          });
         });
       } else {
         upScrollCount.current = 0;
@@ -61,10 +67,12 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
     };
 
     const handleWheel = (e: WheelEvent) => {
-      const isAtAbout = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
+      const isAtAbout =
+        Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
       const atTop = aboutSection.scrollTop <= 0;
       const atBottom =
-        Math.abs(aboutSection.scrollTop + aboutSection.clientHeight - aboutSection.scrollHeight) < 5;
+        Math.abs(aboutSection.scrollTop + aboutSection.clientHeight - aboutSection.scrollHeight) <
+        5;
 
       if (!isAtAbout) {
         e.preventDefault();
@@ -72,6 +80,7 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
         return;
       }
 
+      // Scroll up from About to Home
       if (e.deltaY < 0 && atTop) {
         upScrollCount.current += 1;
         if (upScrollCount.current >= 2) {
@@ -79,11 +88,16 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
           container.scrollBy({ left: -container.clientWidth, behavior: "smooth" });
           upScrollCount.current = 0;
         }
-      } else if (e.deltaY > 0 && atBottom) {
+      }
+
+      // Scroll down from About to vertical sections
+      else if (e.deltaY > 0 && atBottom) {
         e.preventDefault();
-        document.documentElement.scrollTo({
-          top: window.innerHeight,
-          behavior: "smooth",
+        requestAnimationFrame(() => {
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: "smooth",
+          });
         });
       } else {
         upScrollCount.current = 0;
