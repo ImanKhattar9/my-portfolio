@@ -9,14 +9,11 @@ interface HorizontalScrollWrapperProps {
 export default function HorizontalScrollWrapper({ children }: HorizontalScrollWrapperProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
-
-  // Track how many times user scrolls up while already at the top
   const upScrollCount = useRef(0);
 
   useEffect(() => {
     const container = containerRef.current;
     const aboutSection = aboutRef.current;
-
     if (!container || !aboutSection) return;
 
     let startY = 0;
@@ -28,30 +25,35 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
     const handleTouchMove = (e: TouchEvent) => {
       const currentY = e.touches[0].clientY;
       const deltaY = currentY - startY;
-      const atAboutSection = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
-      const atTopOfAboutSection = aboutSection.scrollTop <= 0;
 
-      if (!atAboutSection) {
+      const isAtAbout = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
+      const atTop = aboutSection.scrollTop <= 0;
+      const atBottom =
+        Math.abs(aboutSection.scrollTop + aboutSection.clientHeight - aboutSection.scrollHeight) < 5;
+
+      if (!isAtAbout) {
         e.preventDefault();
         container.scrollBy({ left: -deltaY * 2, behavior: "auto" });
         startY = currentY;
         return;
       }
 
-      // At About section
-      if (deltaY > 0 && atTopOfAboutSection) {
-        // Only scroll to Home if user pulls up again
+      // Pulling up from About
+      if (deltaY > 0 && atTop) {
         upScrollCount.current += 1;
         if (upScrollCount.current >= 2) {
           e.preventDefault();
-          container.scrollBy({
-            left: -container.clientWidth,
-            behavior: "smooth",
-          });
+          container.scrollBy({ left: -container.clientWidth, behavior: "smooth" });
           upScrollCount.current = 0;
         }
+      } else if (deltaY < 0 && atBottom) {
+        // Scrolling down from bottom of About
+        e.preventDefault();
+        document.documentElement.scrollTo({
+          top: window.innerHeight,
+          behavior: "smooth",
+        });
       } else {
-        // Reset count if not pulling up
         upScrollCount.current = 0;
       }
 
@@ -59,25 +61,30 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
     };
 
     const handleWheel = (e: WheelEvent) => {
-      const atAboutSection = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
-      const atTopOfAboutSection = aboutSection.scrollTop <= 0;
+      const isAtAbout = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
+      const atTop = aboutSection.scrollTop <= 0;
+      const atBottom =
+        Math.abs(aboutSection.scrollTop + aboutSection.clientHeight - aboutSection.scrollHeight) < 5;
 
-      if (!atAboutSection) {
+      if (!isAtAbout) {
         e.preventDefault();
         container.scrollBy({ left: e.deltaY, behavior: "smooth" });
         return;
       }
 
-      if (e.deltaY < 0 && atTopOfAboutSection) {
+      if (e.deltaY < 0 && atTop) {
         upScrollCount.current += 1;
         if (upScrollCount.current >= 2) {
           e.preventDefault();
-          container.scrollBy({
-            left: -container.clientWidth,
-            behavior: "smooth",
-          });
+          container.scrollBy({ left: -container.clientWidth, behavior: "smooth" });
           upScrollCount.current = 0;
         }
+      } else if (e.deltaY > 0 && atBottom) {
+        e.preventDefault();
+        document.documentElement.scrollTo({
+          top: window.innerHeight,
+          behavior: "smooth",
+        });
       } else {
         upScrollCount.current = 0;
       }
@@ -98,7 +105,11 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
     <div
       ref={containerRef}
       className="flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory w-screen [&::-webkit-scrollbar]:hidden scrollbar-hide"
-      style={{ height: "100vh", scrollBehavior: "smooth" }}
+      style={{
+        height: "100vh",
+        scrollBehavior: "smooth",
+        overscrollBehavior: "contain",
+      }}
     >
       {/* Home Section */}
       <section className="w-screen h-screen flex-shrink-0 snap-start">
