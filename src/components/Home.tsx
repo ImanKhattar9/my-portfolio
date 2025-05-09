@@ -123,7 +123,7 @@ export default function ProfileAnimation() {
               />
             </defs>
             <text
-              fontSize="27"
+              fontSize="28"
               className="sm:text-[29px]"
               fontFamily="better minds"
               fill="black"
