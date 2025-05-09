@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiDownload } from "react-icons/fi";
 import React from "react";
-
+  
 // Fix for ESLint display-name warning
 const AnchorWithRef = React.forwardRef<HTMLAnchorElement, React.ComponentProps<'a'>>(
   (props, ref) => <a ref={ref} {...props} />
