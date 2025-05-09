@@ -10,6 +10,9 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
   const containerRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
 
+  // Track how many times user scrolls up while already at the top
+  const upScrollCount = useRef(0);
+
   useEffect(() => {
     const container = containerRef.current;
     const aboutSection = aboutRef.current;
@@ -25,48 +28,58 @@ export default function HorizontalScrollWrapper({ children }: HorizontalScrollWr
     const handleTouchMove = (e: TouchEvent) => {
       const currentY = e.touches[0].clientY;
       const deltaY = currentY - startY;
-
-      const atAboutSection =
-        Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
+      const atAboutSection = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
       const atTopOfAboutSection = aboutSection.scrollTop <= 0;
 
       if (!atAboutSection) {
-        // Still on Home: horizontal scroll
         e.preventDefault();
-        container.scrollBy({
-          left: -deltaY * 2,
-          behavior: "auto",
-        });
+        container.scrollBy({ left: -deltaY * 2, behavior: "auto" });
         startY = currentY;
-      } else {
-        // On About section
-        if (deltaY > 0 && atTopOfAboutSection) {
-          // Scrolling up at top of About: prevent pull-to-refresh
+        return;
+      }
+
+      // At About section
+      if (deltaY > 0 && atTopOfAboutSection) {
+        // Only scroll to Home if user pulls up again
+        upScrollCount.current += 1;
+        if (upScrollCount.current >= 2) {
           e.preventDefault();
           container.scrollBy({
             left: -container.clientWidth,
             behavior: "smooth",
           });
+          upScrollCount.current = 0;
         }
+      } else {
+        // Reset count if not pulling up
+        upScrollCount.current = 0;
       }
+
+      startY = currentY;
     };
 
     const handleWheel = (e: WheelEvent) => {
-      const atAboutSection =
-        Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
+      const atAboutSection = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 5;
+      const atTopOfAboutSection = aboutSection.scrollTop <= 0;
 
       if (!atAboutSection) {
         e.preventDefault();
-        container.scrollBy({
-          left: e.deltaY,
-          behavior: "smooth",
-        });
-      } else if (e.deltaY < 0 && aboutSection.scrollTop <= 0) {
-        e.preventDefault();
-        container.scrollBy({
-          left: -container.clientWidth,
-          behavior: "smooth",
-        });
+        container.scrollBy({ left: e.deltaY, behavior: "smooth" });
+        return;
+      }
+
+      if (e.deltaY < 0 && atTopOfAboutSection) {
+        upScrollCount.current += 1;
+        if (upScrollCount.current >= 2) {
+          e.preventDefault();
+          container.scrollBy({
+            left: -container.clientWidth,
+            behavior: "smooth",
+          });
+          upScrollCount.current = 0;
+        }
+      } else {
+        upScrollCount.current = 0;
       }
     };
 
