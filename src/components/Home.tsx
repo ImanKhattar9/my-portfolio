@@ -39,7 +39,7 @@ export default function ProfileAnimation() {
   }, [nameControls, ovalControls]);
 
   return (
-<div className="relative flex flex-col items-center justify-start text-white h-[85vh] pt-55 sm:pt-24 md:pt-28">
+<div className="relative flex flex-col items-center justify-start text-white h-[85vh] pt-57 sm:pt-24 md:pt-28">
   {/* Name + Oval Wrapper */}
   <div className="relative">
     {/* Name */}
@@ -123,7 +123,7 @@ export default function ProfileAnimation() {
               />
             </defs>
             <text
-              fontSize="29"
+              fontSize="27"
               className="sm:text-[29px]"
               fontFamily="better minds"
               fill="black"
