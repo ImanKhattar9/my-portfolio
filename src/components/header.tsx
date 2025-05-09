@@ -50,7 +50,7 @@ export default function Header() {
 
   return (
     <motion.header
-    className="flex items-center justify-between px-2 bg-white rounded-full shadow-lg mt-8 ml-3 mr-3 md:ml-8 md:mr-8 h-[9vh] sm:h-[10vh] relative z-40"
+    className="flex items-center justify-between h-[8vh] px-2 bg-white rounded-full shadow-lg mt-8 ml-3 mr-3 md:ml-8 md:mr-8 h-[6vh] sm:h-[10vh] relative z-40"
 
       variants={headerVariants}
       initial="hidden"
@@ -63,7 +63,7 @@ export default function Header() {
           alt="Logo"
           width={40}    // You can adjust the numbers
           height={40}   // depending on your actual logo size
-          className="w-11 ml-2 sm:w-8 md:w-10 lg:w-10"
+          className="w-10 ml-2 sm:w-8 md:w-10 lg:w-10"
         />
 
       </motion.div>
@@ -209,7 +209,8 @@ export default function Header() {
                       className="text-lg flex items-center justify-between"
                       onClick={toggleMenu}
                     >
-                      <span className="hover:underline">Project</span>                      <motion.span
+                      <span className="hover:underline">Project</span>                      
+                      <motion.span
                         className="text-gray-400 text-xl"
                         animate={{ x: [0, 5, 0] }}
                         transition={{ repeat: Infinity, duration: 1.5 }}
