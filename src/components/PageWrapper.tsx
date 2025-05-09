@@ -18,8 +18,7 @@
       if (!container || !aboutSection) return;
 
       let startY = 0;
-      let touchStartTime = 0;
-
+      
       const handleTouchStart = (e: TouchEvent) => {
         startY = e.touches[0].clientY;
         touchStartTime = Date.now();
