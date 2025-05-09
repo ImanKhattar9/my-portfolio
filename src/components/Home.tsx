@@ -39,70 +39,72 @@ export default function ProfileAnimation() {
   }, [nameControls, ovalControls]);
 
   return (
-    <div className="h-[85vh] flex flex-col items-center justify-center text-white relative mt-3 md:min-h-screen">
-      {/* Name Animation */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={nameControls}
-        className="absolute x-10 font-special text-[4rem] sm:text-[12rem] md:text-[9rem] lg:text-[10rem] font-bold text-center px-2"
-      >
-        <div className="overflow-hidden">
-          <motion.div
-            initial={{ x: "-100vw" }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1.5, ease: "anticipate", delay: 2 }}
-            className="mb-2 sm:mb-0"
-          >
-            IMAN
-          </motion.div>
-        </div>
-        <div className="overflow-hidden -mt-5  sm:-mt-20">
-          <motion.div
-            initial={{ x: "100vw" }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1.5, ease: "anticipate", delay: 2 }}
-          >
-            KHATTAR
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Oval Container */}
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={ovalControls}
-        className="relative w-15 h-24 sm:w-28 sm:h-44 z-20"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {/* Front Side */}
-        <div
-          className="absolute w-full h-full bg-pink-400/75 rounded-full flex flex-col items-center justify-center"
-          style={{ backfaceVisibility: "hidden" }}
+<div className="relative flex flex-col items-center justify-start text-white h-[85vh] pt-50 sm:pt-24 md:pt-28">
+  {/* Name + Oval Wrapper */}
+  <div className="relative">
+    {/* Name */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={nameControls}
+      className="font-special text-[4rem] sm:text-[12rem] md:text-[9rem] lg:text-[10rem] font-bold text-center px-2"
+    >
+      <div className="overflow-hidden">
+        <motion.div
+          initial={{ x: "-100vw" }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1.5, ease: "anticipate", delay: 2 }}
+          className="mb-2 sm:mb-0"
         >
-          <div className=" text-xs sm:text-2xl">Web</div>
-          <div className="text-xs sm:text-2xl">Developer</div>
-        </div>
-
-        {/* Back Side */}
-        <div
-          className="absolute w-full h-full bg-pink-400/75 rounded-full flex items-center justify-center overflow-hidden"
-          style={{
-            backfaceVisibility: "hidden",
-            transform: "rotateY(180deg)",
-          }}
+          IMAN
+        </motion.div>
+      </div>
+      <div className="overflow-hidden -mt-5 sm:-mt-20">
+        <motion.div
+          initial={{ x: "100vw" }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1.5, ease: "anticipate", delay: 2 }}
         >
-          <Image
-            src="/pictures/me.png"
-            alt="Iman Khattar"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-full"
-          />
-        </div>
-      </motion.div>
+          KHATTAR
+        </motion.div>
+      </div>
+    </motion.div>
 
+    {/* Oval: absolutely positioned at vertical center of name */}
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={ovalControls}
+      className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-15 h-24 sm:w-28 sm:h-44 z-20"
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      {/* Front Side */}
+      <div
+        className="absolute w-full h-full bg-pink-400/75 rounded-full flex flex-col items-center justify-center"
+        style={{ backfaceVisibility: "hidden" }}
+      >
+        <div className="text-xs sm:text-2xl">Web</div>
+        <div className="text-xs sm:text-2xl">Developer</div>
+      </div>
+
+      {/* Back Side */}
+      <div
+        className="absolute w-full h-full bg-pink-400/75 rounded-full flex items-center justify-center overflow-hidden"
+        style={{
+          backfaceVisibility: "hidden",
+          transform: "rotateY(180deg)",
+        }}
+      >
+        <Image
+          src="/pictures/me.png"
+          alt="Iman Khattar"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-full"
+        />
+      </div>
+    </motion.div>
+  </div>
       {/* Circular Text Animation */}
-      <div className="absolute top-15 right-7 sm:right-20 sm:top-15 flex items-center">
+      <div className="absolute top-13 right-7 sm:right-20 sm:top-15 flex items-center">
         {isVisible && (
           <motion.svg
             width="60"
@@ -150,7 +152,8 @@ export default function ProfileAnimation() {
         Download My CV        
         </span>
     </div>
-  </MotionAnchor></div>
+  </MotionAnchor>
+  </div>
   );
 }
 
