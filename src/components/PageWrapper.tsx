@@ -19,12 +19,6 @@
 
       let startY = 0;
       
-      const handleTouchStart = (e: TouchEvent) => {
-        startY = e.touches[0].clientY;
-        touchStartTime = Date.now();
-        isScrollingRef.current = false;
-      };
-
       const handleTouchMove = (e: TouchEvent) => {
         const currentY = e.touches[0].clientY;
         const deltaY = currentY - startY;
@@ -77,12 +71,10 @@
       };
 
       // Attach event listeners
-      container.addEventListener("touchstart", handleTouchStart, { passive: false });
       container.addEventListener("touchmove", handleTouchMove, { passive: false });
       container.addEventListener("wheel", handleWheel, { passive: false });
 
       return () => {
-        container.removeEventListener("touchstart", handleTouchStart);
         container.removeEventListener("touchmove", handleTouchMove);
         container.removeEventListener("wheel", handleWheel);
       };
