@@ -39,7 +39,7 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const RootLayout: React.FC = () => {
   return (
     <html lang="en">
       <body className="bg-gray-500/40">
