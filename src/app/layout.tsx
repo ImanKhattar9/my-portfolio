@@ -19,7 +19,7 @@ export const metadata = {
   },
 };
 
-const RootLayout: React.FC = ({ children }: { children: React.ReactNode }) => {
+const RootLayout: React.FC = () => {
   return (
     <html lang="en">
       <head>
